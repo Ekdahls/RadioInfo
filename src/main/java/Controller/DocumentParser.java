@@ -45,6 +45,21 @@ public class DocumentParser {
 
     }
 
+    public void setupDocument( String uri){
+
+        try {
+            doc = convertStringToDoc(restTemplate.getForObject(uri,
+                    String.class, 1));
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     private static Document convertStringToDoc(String xmlStr)
             throws ParserConfigurationException, IOException, SAXException {
 

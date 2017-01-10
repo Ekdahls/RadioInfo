@@ -23,7 +23,7 @@ public class ChannelParser extends DocumentParser {
     }
 
 
-    public void run(){
+    public void init(){
 
         try {
             //Setup doc + header to get total pages

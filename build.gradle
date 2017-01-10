@@ -29,5 +29,6 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
 	compile('org.springframework.boot:spring-boot-starter-web-services')
+	compile("org.springframework.integration:spring-integration-core:4.2.1.RELEASE")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
