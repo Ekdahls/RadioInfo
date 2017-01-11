@@ -19,11 +19,13 @@ public class MainView {
 
     private JList<String> channelList = new JList<>();
     private JList<String> episodeList = new JList<>();
+    private String currentImageUrl;
     DefaultListModel<String> listModel = new DefaultListModel<String>();
     DefaultListModel<String> listModel2 = new DefaultListModel<String>();
     private boolean clicked = false;
     private EpisodesView episodesView;
     private Collector collector;
+    private int currentEpisodeIndex =0;
 
     private JTable episodeTable;
     DefaultTableModel tableModel = new DefaultTableModel();
@@ -124,8 +126,14 @@ public class MainView {
                 if (evt.getClickCount() == 1) {
 
                     int index = table.rowAtPoint(evt.getPoint());
-
+                    currentEpisodeIndex = index;
                     System.out.println(index + " : Index was clicked");
+                    currentImageUrl = collector.getEpisodeArrayList().get(index).getImageUrl();
+                    ArrayList<Episode> ae = collector.getEpisodeArrayList();
+                    MainFrame.title.setText(ae.get(index).getProgramName());
+                    MainFrame.title2.setText(ae.get(index).getChannelName());
+                    MainFrame.description.setText(ae.get(index).getDescription());
+                    MainFrame.panel.revalidate();
                     // Double-click detected
                 }else if (evt.getClickCount() == 2) {
 
@@ -133,9 +141,7 @@ public class MainView {
                 }
             }
         });
-
     }
-
 
     public void updateEpisodesTable(){
 
@@ -159,6 +165,11 @@ public class MainView {
         return episodeTable;
     }
 
+    public String getCurrentImageUrl() {
+        return currentImageUrl;
+    }
+
+
     public JList getEpisodeList(){
         return episodeList;
     }
@@ -167,6 +178,9 @@ public class MainView {
         return ae;
     }
 
+    public int getCurrentEpisodeIndex() {
+        return currentEpisodeIndex;
+    }
 
     public boolean getClicked(){
         return clicked;

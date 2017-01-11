@@ -21,8 +21,6 @@ public class Collector implements Runnable {
 
     public static boolean running = true;
 
-    private Thread thread = new Thread(this);
-
     public Collector(){
 
         channelParser = new ChannelParser();
@@ -36,7 +34,6 @@ public class Collector implements Runnable {
         }
 //        collectEpisodes();
         episodeArrayList = episodeParser.getEpisodeArrayList();
-        thread.start();
     }
 
 
@@ -73,10 +70,8 @@ public class Collector implements Runnable {
 
         while (running) {
 
-            System.out.println("Thread is running");
 //            collectEpisodes();
             try {
-                thread.sleep(100);
             } catch (Exception e) {
                 e.printStackTrace();
             }

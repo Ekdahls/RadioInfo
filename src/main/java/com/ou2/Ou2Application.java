@@ -19,9 +19,13 @@ public class Ou2Application {
 
     public static void main(String[] args) {
 
+        Collector collector= new Collector();
+        Thread collectorThread = new Thread(collector);
+        collectorThread.start();
+
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                MainFrame mainFrame = new MainFrame();
+                MainFrame mainFrame = new MainFrame(collector);
                 mainFrame.show();
             }
         });
